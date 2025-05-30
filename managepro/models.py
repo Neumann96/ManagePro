@@ -82,14 +82,12 @@ class Product(models.Model):
 
 
 class ProductDiscount(models.Model):
-    # Для составных ключей Django не поддерживает CompositePrimaryKey,
-    # их нужно либо обрабатывать вручную, либо создавать отдельный PK
     productid = models.ForeignKey(Product, models.DO_NOTHING, db_column='productid')
     discountid = models.ForeignKey(Discount, models.DO_NOTHING, db_column='discountid')
 
     class Meta:
         managed = False
-        db_table = 'product_discount'
+        db_table = 'discount'
         unique_together = (('productid', 'discountid'),)
 
     def __str__(self):

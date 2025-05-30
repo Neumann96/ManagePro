@@ -35,7 +35,7 @@ class NotificationAdmin(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('productid', 'productname', 'categoryid', 'quantity', 'price', 'expirydate', 'warehouseid')
-    list_filter = ('categoryid', 'warehouseid')
+    list_filter = ('categoryid', 'warehouseid', 'expirydate')
     search_fields = ('productname',)
 
 
