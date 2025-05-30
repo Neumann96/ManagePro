@@ -22,6 +22,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class DiscountAdmin(admin.ModelAdmin):
     list_display = ('discountid', 'discountpercentage', 'status')
     search_fields = ('status',)
+    list_filter = ['status']
 
 
 @admin.register(Notification)
