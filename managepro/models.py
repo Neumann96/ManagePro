@@ -16,6 +16,7 @@ class Archiveproduct(models.Model):
     class Meta:
         managed = False
         db_table = 'archiveproduct'
+        verbose_name = 'Архив продуктов'
 
     def __str__(self):
         return self.productname or f"Archiveproduct {self.archiveid}"
@@ -28,6 +29,7 @@ class Category(models.Model):
     class Meta:
         managed = False
         db_table = 'category'
+        verbose_name = 'Категории'
 
     def __str__(self):
         return self.categoryname
@@ -42,6 +44,7 @@ class Discount(models.Model):
     class Meta:
         managed = False
         db_table = 'discount'
+        verbose_name = 'Скидки'
 
     def __str__(self):
         return f"{self.discountpercentage}%"
@@ -58,6 +61,7 @@ class Notification(models.Model):
     class Meta:
         managed = False
         db_table = 'notification'
+        verbose_name = 'Уведомления'
 
     def __str__(self):
         return f"Notification {self.notificationid}"
@@ -76,6 +80,7 @@ class Product(models.Model):
     class Meta:
         managed = False
         db_table = 'product'
+        verbose_name = 'Продукты'
 
     def __str__(self):
         return self.productname
@@ -89,6 +94,7 @@ class ProductDiscount(models.Model):
         managed = False
         db_table = 'discount'
         unique_together = (('productid', 'discountid'),)
+        verbose_name = 'Продукты - скидки'
 
     def __str__(self):
         return f"ProductDiscount: {self.productid} - {self.discountid}"
@@ -103,6 +109,7 @@ class Report(models.Model):
     class Meta:
         managed = False
         db_table = 'report'
+        verbose_name = 'Отчёты'
 
     def __str__(self):
         return f"Report {self.reportid} ({self.reporttype})"
@@ -116,6 +123,7 @@ class ReportProduct(models.Model):
         managed = False
         db_table = 'report_product'
         unique_together = (('reportid', 'productid'),)
+        verbose_name = 'Продукты - отчёты'
 
     def __str__(self):
         return f"ReportProduct: Report {self.reportid_id} - Product {self.productid_id}"
@@ -130,6 +138,7 @@ class Users(models.Model):
     class Meta:
         managed = False
         db_table = 'users'
+        verbose_name = 'Пользователи'
 
     def __str__(self):
         return self.username
@@ -143,6 +152,7 @@ class Warehouse(models.Model):
     class Meta:
         managed = False
         db_table = 'warehouse'
+        verbose_name = 'Склады'
 
     def __str__(self):
         return self.address
