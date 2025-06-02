@@ -17,6 +17,7 @@ class Archiveproduct(models.Model):
         managed = False
         db_table = 'archiveproduct'
         verbose_name = 'Архив продуктов'
+        verbose_name_plural = "Архив продуктов"
 
     def __str__(self):
         return self.productname or f"Archiveproduct {self.archiveid}"
@@ -30,6 +31,7 @@ class Category(models.Model):
         managed = False
         db_table = 'category'
         verbose_name = 'Категории'
+        verbose_name_plural = "Категории"
 
     def __str__(self):
         return self.categoryname
@@ -45,6 +47,7 @@ class Discount(models.Model):
         managed = False
         db_table = 'discount'
         verbose_name = 'Скидки'
+        verbose_name_plural = "Скидки"
 
     def __str__(self):
         return f"{self.discountpercentage}%"
@@ -62,6 +65,7 @@ class Notification(models.Model):
         managed = False
         db_table = 'notification'
         verbose_name = 'Уведомления'
+        verbose_name_plural = "Уведомления"
 
     def __str__(self):
         return f"Notification {self.notificationid}"
@@ -81,23 +85,37 @@ class Product(models.Model):
         managed = False
         db_table = 'product'
         verbose_name = 'Продукты'
+        verbose_name_plural = "Продукты"
 
     def __str__(self):
         return self.productname
 
 
 class ProductDiscount(models.Model):
-    productid = models.ForeignKey(Product, models.DO_NOTHING, db_column='productid')
-    discountid = models.ForeignKey(Discount, models.DO_NOTHING, db_column='discountid')
+    productid = models.ForeignKey(
+        Product,
+        models.DO_NOTHING,
+        db_column='productid',
+        primary_key=True,
+        verbose_name="Продукт"
+    )
+    discountid = models.ForeignKey(
+        Discount,
+        models.DO_NOTHING,
+        db_column='discountid',
+        verbose_name="Скидка"
+    )
 
     class Meta:
         managed = False
-        db_table = 'discount'
+        db_table = 'product_discount'
+        verbose_name = 'Продукт — Скидка'
+        verbose_name_plural = 'Продукты — Скидки'
+        # Указываем составной ключ (для инфы, Django его не применит на уровне ORM)
         unique_together = (('productid', 'discountid'),)
-        verbose_name = 'Продукты - скидки'
 
     def __str__(self):
-        return f"ProductDiscount: {self.productid} - {self.discountid}"
+        return f"{self.productid} — {self.discountid}"
 
 
 class Report(models.Model):
@@ -110,6 +128,7 @@ class Report(models.Model):
         managed = False
         db_table = 'report'
         verbose_name = 'Отчёты'
+        verbose_name_plural = "Отчёты"
 
     def __str__(self):
         return f"Report {self.reportid} ({self.reporttype})"
@@ -124,6 +143,7 @@ class ReportProduct(models.Model):
         db_table = 'report_product'
         unique_together = (('reportid', 'productid'),)
         verbose_name = 'Продукты - отчёты'
+        verbose_name_plural = "Продукты - отчёты"
 
     def __str__(self):
         return f"ReportProduct: Report {self.reportid_id} - Product {self.productid_id}"
@@ -139,6 +159,9 @@ class Users(models.Model):
         managed = False
         db_table = 'users'
         verbose_name = 'Пользователи'
+        verbose_name_plural = "Пользователи"
+
+
 
     def __str__(self):
         return self.username
@@ -153,6 +176,8 @@ class Warehouse(models.Model):
         managed = False
         db_table = 'warehouse'
         verbose_name = 'Склады'
+        verbose_name_plural = "Склады"
+
 
     def __str__(self):
         return self.address
