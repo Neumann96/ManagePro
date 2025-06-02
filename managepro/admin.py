@@ -27,7 +27,7 @@ class ProductAdmin(admin.ModelAdmin):
     raw_id_fields = ('categoryid', 'warehouseid')
     readonly_fields = ('productid',)
     list_display_links = ('productname',)
-    date_hierarchy = 'datereceived'
+    date_hierarchy = 'expirydate'
 
     @admin.display(description='Category')
     def category_name(self, obj):
@@ -70,7 +70,6 @@ class NotificationAdmin(admin.ModelAdmin):
     list_display = ('notificationid', 'productid', 'warehouseid', 'notificationtype', 'creationdate', 'status')
     list_filter = ('notificationtype', 'status')
     date_hierarchy = 'creationdate'
-    raw_id_fields = ('productid', 'warehouseid')
 
 
 @admin.register(Users)

@@ -78,7 +78,7 @@ class Product(models.Model):
     quantity = models.IntegerField(blank=True, null=True)
     expirydate = models.DateField(blank=True, null=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    datereceived = models.DateField(blank=True, null=True)
+    datereceived = models.DateTimeField(blank=True, null=True)
     warehouseid = models.ForeignKey('Warehouse', models.DO_NOTHING, db_column='warehouseid', blank=True, null=True)
 
     class Meta:
