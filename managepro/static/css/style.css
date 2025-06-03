@@ -26,7 +26,7 @@ body {
 
 .name {
     font-family: "Jost", serif;
-    color: #42B2FC;
+    color: #FFB400;
     font-size: 24px;
     text-decoration: none;
 }
@@ -46,15 +46,15 @@ li {
 .choose {
     text-decoration: none;
     padding: 2px;
-    background-color: #42B2FC;
-    border: 1px solid #42B2FC;
+    background-color: #ffb400;
+    border: 1px solid #ffb400;
     color: white;
     border-radius: 4px;
     transition: background-color 0.4s, color 0.4s;
 }
 
 .choose:hover {
-    color: #42B2FC;
+    color: #ffb400;
     background-color: white;
 }
 
@@ -88,8 +88,8 @@ li {
 }
 
 .main-text {
-    padding-right: 500px;
-    padding-bottom: 110px;
+    padding-right: 800px;
+    padding-bottom: 100px;
     font-family: "Inter", serif;
     margin: 0px;
     font-size: 64px;
@@ -99,7 +99,7 @@ li {
     opacity: 0;
     position: absolute;
     animation: fadeAnimation 16s infinite;
-    color: #42B2FC;
+    color: #ffb400;
 }
 
 .main-text-blue:nth-child(1) {
@@ -127,18 +127,18 @@ li {
 .choose_2 {
     text-decoration: none;
     font-family: "Jost", serif;
-    font-size: 20px;
+    font-size: 25px;
     padding: 20px 60px;
     margin-right: 470px;
-    background-color: #42B2FC;
-    border: 2px solid #42B2FC;
+    background-color: #ffb400;
+    border: 2px solid #ffb400;
     color: white;
     border-radius: 8px;
     transition: background-color 0.4s, color 0.4s;
 }
 
 .choose_2:hover {
-    color: #42B2FC;
+    color: #ffb400;
     background-color: #F0F2F5;
 }
 
@@ -190,7 +190,7 @@ hr {
 }
 
 .text-blue {
-    color: #42B2FC;
+    color: #ffb400;
 }
 
 .advant-grid {
@@ -201,7 +201,7 @@ hr {
     padding: 0px 250px;
     padding-bottom: 50px;
     display: grid;
-    grid-template-columns: repeat(3, 274px);
+    grid-template-columns: repeat(2, 274px);
     grid-template-rows: repeat(2, 256px);
     justify-items: center;
     justify-content: center;
@@ -219,16 +219,16 @@ hr {
     font-size: 20px;
     padding: 10px 40px;
     margin-top: 40px;
-    width: 280px;
-    background-color: #42B2FC;
-    border: 2px solid #42B2FC;
+    width: 300px;
+    background-color: #ffb400;
+    border: 2px solid #ffb400;
     color: white;
     border-radius: 8px;
     transition: background-color 0.4s, color 0.4s;
 }
 
 .choose_3:hover {
-    color: #42B2FC;
+    color: #ffb400;
     background-color: white;
 }
 
