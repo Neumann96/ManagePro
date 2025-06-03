@@ -7,3 +7,7 @@ from django.shortcuts import render, get_object_or_404
 
 def main_window(request):
     return render(request, 'main.html')
+
+
+def views_products(request):
+    return render(request, 'base.html')
