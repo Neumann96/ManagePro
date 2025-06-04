@@ -44,3 +44,8 @@ def warehouse_list(request):
         'warehouses': warehouses,
         'query': query
     })
+
+
+def product_detail(request, productid):
+    product = get_object_or_404(Product, productid=productid)
+    return render(request, 'product_detail.html', {'product': product})

@@ -4,17 +4,19 @@
 {% block content %}
   <div class="my_products"><h4>Мои <span class="text-blue">продукты</span></h4></div>
   <div class="main-products">
-        <div class="main-products-grid">
-            {% for product in products %}
-              <div class="product-card">
-                <img src="{{ product.image.url }}" alt="{{ product.productname }}" width="200">
-                <p class="name-product">{{ product.productname }}</p>
-                  <p class="price-product">{{ product.price|floatformat:1 }}₽/шт.</p>
-                  <p><span class="title-product">В наличии:</span> {{ product.quantity }} шт.</p>
-                  <p><span class="title-product">Окончание срока годности:</span><br>{{ product.expirydate }}</p>
-                  <p><span class="title-product">Склад:</span> {{ product.warehouseid }}</p>
-              </div>
-            {% endfor %}
+  <div class="main-products-grid">
+    {% for product in products %}
+      <a href="{% url 'product_detail' product.productid %}" class="product-link">
+        <div class="product-card">
+          <img src="{{ product.image.url }}" alt="{{ product.productname }}" width="200">
+          <p class="name-product">{{ product.productname }}</p>
+          <p class="price-product">{{ product.price|floatformat:1 }}₽/шт.</p>
+          <p><span class="title-product">В наличии:</span> {{ product.quantity }} шт.</p>
+          <p><span class="title-product">Окончание срока годности:</span><br>{{ product.expirydate }}</p>
+          <p><span class="title-product">Склад:</span> {{ product.warehouseid }}</p>
         </div>
-    </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>
 {% endblock %}

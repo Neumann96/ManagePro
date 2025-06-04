@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="product-detail-container">
+    <div class="product-image">
+      <img src="{{ product.image.url }}" alt="{{ product.productname }}">
+    </div>
+    <div class="product-info">
+      <h2>{{ product.productname }}</h2>
+      <p><strong>Категория:</strong> {{ product.categoryid }}</p>
+      <p><strong>Цена:</strong> {{ product.price|floatformat:1 }} ₽/шт.</p>
+      <p><strong>В наличии:</strong> {{ product.quantity }} шт.</p>
+      <p><strong>Срок годности:</strong> {{ product.expirydate }}</p>
+      <p><strong>Дата поступления:</strong> {{ product.datereceived }}</p>
+      <p><strong>Склад:</strong> {{ product.warehouseid }}</p>
+      <a href="{% url 'view_products' %}" class="back-button">Назад ко всем продуктам</a>
+    </div>
+  </div>
+{% endblock %}
