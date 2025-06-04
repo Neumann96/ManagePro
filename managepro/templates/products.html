@@ -8,7 +8,11 @@
             {% for product in products %}
               <div class="product-card">
                 <img src="{{ product.image.url }}" alt="{{ product.productname }}" width="200">
-                <p>{{ product.productname }}</p>
+                <p class="name-product">{{ product.productname }}</p>
+                  <p class="price-product">{{ product.price|floatformat:1 }}₽/шт.</p>
+                  <p><span class="title-product">В наличии:</span> {{ product.quantity }} шт.</p>
+                  <p><span class="title-product">Окончание срока годности:</span><br>{{ product.expirydate }}</p>
+                  <p><span class="title-product">Склад:</span> {{ product.warehouseid }}</p>
               </div>
             {% endfor %}
         </div>

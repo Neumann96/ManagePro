@@ -69,6 +69,7 @@ li {
 
 .enter:visited {
     color: black;
+    text-decoration: none;
 }
 
 .main {
@@ -106,12 +107,41 @@ li {
 
 .product-card {
     background: #fff;
+    text-align: center;
+    font-family: "Inter", serif;
     border: 1px solid #ddd;
     border-radius: 10px;
     padding: 10px;
     text-align: center;
     width: 100%;
     max-width: 250px;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+    transition: border 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-card p {
+    line-height: 15px;
+
+}
+
+.title-product {
+    color: #1d191382;
+}
+
+.name-product {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.price-product {
+    font-weight: bold;
+}
+
+.product-card:hover {
+    border: 2px solid #ffb400;
 }
 
 .main-text {
