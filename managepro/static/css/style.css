@@ -90,24 +90,28 @@ li {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: white;
     padding-bottom: 60px;
 }
 
 .main-products-grid {
-    font-family: "Inter", serif;
-    font-size: 20px;
-    background-color: white;
-    text-align: center;
-    padding: 0px 250px;
-    padding-bottom: 50px;
     display: grid;
-    grid-template-columns: repeat(2, 274px);
-    grid-template-rows: repeat(2, 256px);
-    justify-items: center;
-    justify-content: center;
-    grid-row-gap: 80px;
-    grid-column-gap: 100px;
+    grid-template-columns: repeat(4, 1fr); /* 4 продукта в ряд */
+    gap: 40px; /* расстояние между карточками */
+    justify-items: center; /* выравнивание карточек по центру */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
 }
 
 .main-text {
@@ -207,6 +211,15 @@ hr {
     margin: 0px;
     padding-top: 90px;
     padding-bottom: 90px;
+    text-align: center;
+    font-family: "Inter", serif;
+    font-size: 64px;
+}
+
+.my_products > h4 {
+    margin: 0px;
+    padding-top: 40px;
+    padding-bottom: 10px;
     text-align: center;
     font-family: "Inter", serif;
     font-size: 64px;

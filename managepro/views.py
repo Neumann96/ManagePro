@@ -10,4 +10,5 @@ def main_window(request):
 
 
 def views_products(request):
-    return render(request, 'base.html')
+    products = Product.objects.filter(image__isnull=False).exclude(image='')
+    return render(request, 'products.html', {'products': products})

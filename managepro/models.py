@@ -55,7 +55,7 @@ class Discount(models.Model):
 
 class Notification(models.Model):
     notificationid = models.AutoField(primary_key=True)
-    productid = models.ForeignKey('Product', models.DO_NOTHING, db_column='productid', blank=True, null=True)
+    productid = models.ForeignKey('Product',on_delete=models.CASCADE,db_column='productid',blank=True,null=True)
     warehouseid = models.ForeignKey('Warehouse', models.DO_NOTHING, db_column='warehouseid', blank=True, null=True)
     notificationtype = models.TextField(blank=True, null=True)
     creationdate = models.DateTimeField(blank=True, null=True)
@@ -80,6 +80,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     datereceived = models.DateTimeField(blank=True, null=True)
     warehouseid = models.ForeignKey('Warehouse', models.DO_NOTHING, db_column='warehouseid', blank=True, null=True)
+    image = models.ImageField(upload_to='product_images/', blank=True, null=True)
 
     class Meta:
         managed = False
