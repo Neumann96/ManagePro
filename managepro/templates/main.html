@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,12 +9,11 @@
 <body>
     <header class="header">
         <nav class="head-text">
-            <a href="index.html" class="name"><h2>ManagePro</h2></a>
+            <a href="{% url 'main_window' %}" class="name"><h2>ManagePro</h2></a>
             <ul>
                 <li><a href="products" class="enter">Мои продукты</a></li>
-                <li><a href="" class="enter">Мои категории</a></li>
-                <li><a href="" class="enter">Мои </a></li>
-                <li><a href="" class="enter">Тесты</a></li>
+                <li><a href="categories" class="enter">Мои категории</a></li>
+                <li><a href="warehouse" class="enter">Мои склады</a></li>
             </ul>
             <ul>
                 <li>
@@ -38,7 +37,7 @@
                 </div>
             </h4>
         </div>
-        <a class="choose_2" href="form.html" target="_blank">Мой склад</a>
+        <a class="choose_2" href="" target="_blank">Мой склад</a>
     </div>
 
     <div class="achiev">

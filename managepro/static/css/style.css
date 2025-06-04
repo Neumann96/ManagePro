@@ -60,15 +60,18 @@ li {
 
 .enter {
     text-decoration: none;
+    color: black !important;
     transition: color 0.4s;
 }
 
-.enter:hover {
-    color: rgba(0, 0, 0, 0.408);
+.enter:link,
+.enter:visited {
+    color: black !important;
+    text-decoration: none;
 }
 
-.enter:visited {
-    color: black;
+.enter:hover {
+    color: rgba(0, 0, 0, 0.408) !important;
     text-decoration: none;
 }
 
