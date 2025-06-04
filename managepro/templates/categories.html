@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div><h1>ДИНАХУ</h1></div>
+  <div class="my_products"><h4><span class="text-blue">Категории</span></h4></div>
+  <form method="get">
+    <input type="text" name="search" placeholder="Поиск по категориям..." value="{{ query }}">
+    <button type="submit">Найти</button>
+  </form>
+  <ul class="category-list">
+    {% for cat in category %}
+      <li class="category-item">{{ cat.categoryname }}</li>
+    {% empty %}
+      <li>Категории не найдены.</li>
+    {% endfor %}
+  </ul>
+
+  <div class="my_products"><h4>Количество <span class="text-blue">продуктов</span> в категориях</h4></div>
+  <ul>
+    {% for cat in category_with_counts %}
+      <li>{{ cat.categoryname }} — {{ cat.product_count }} товаров</li>
+    {% endfor %}
+  </ul>
 {% endblock %}

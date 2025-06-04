@@ -365,3 +365,28 @@ hr {
       font-size: 14px;
     }
   }
+
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* Расстояние между категориями */
+    padding: 0;
+    margin: 20px auto;
+    max-width: 500px;
+    list-style: none;
+}
+
+.category-item {
+    background-color: #f4f4f4;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-family: "Inter", sans-serif;
+    font-size: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.category-item:hover {
+    background-color: #f8d98f;
+    cursor: pointer;
+}
