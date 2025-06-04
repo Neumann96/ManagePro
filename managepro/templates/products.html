@@ -6,7 +6,7 @@
   <div class="main-products">
   <div class="main-products-grid">
     {% for product in products %}
-      <a href="{% url 'product_detail' product.productid %}" class="product-link">
+      <a href="{% url 'product_detail' productid=product.productid %}" class="product-link">
         <div class="product-card">
           <img src="{{ product.image.url }}" alt="{{ product.productname }}" width="200">
           <p class="name-product">{{ product.productname }}</p>

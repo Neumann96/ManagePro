@@ -1,19 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="product-detail-container">
-    <div class="product-image">
-      <img src="{{ product.image.url }}" alt="{{ product.productname }}">
-    </div>
-    <div class="product-info">
-      <h2>{{ product.productname }}</h2>
-      <p><strong>Категория:</strong> {{ product.categoryid }}</p>
-      <p><strong>Цена:</strong> {{ product.price|floatformat:1 }} ₽/шт.</p>
-      <p><strong>В наличии:</strong> {{ product.quantity }} шт.</p>
-      <p><strong>Срок годности:</strong> {{ product.expirydate }}</p>
-      <p><strong>Дата поступления:</strong> {{ product.datereceived }}</p>
-      <p><strong>Склад:</strong> {{ product.warehouseid }}</p>
-      <a href="{% url 'view_products' %}" class="back-button">Назад ко всем продуктам</a>
-    </div>
+<div class="product-detail-container">
+  <div class="product-image">
+    <img src="{{ product.image.url }}" alt="{{ product.productname }}">
   </div>
+  <div class="product-info">
+    <h2>{{ product.productname }}</h2>
+    <p><strong>Цена:</strong> {{ product.price|floatformat:1 }} ₽</p>
+    <p><strong>Количество:</strong> {{ product.quantity }} шт.</p>
+    <p><strong>Срок годности:</strong> {{ product.expirydate }}</p>
+    <p><strong>Дата поступления:</strong> {{ product.datereceived }}</p>
+    <p><strong>Категория:</strong> {{ product.categoryid }}</p>
+    <p><strong>Склад:</strong> {{ product.warehouseid }}</p>
+
+    <a href="{% url 'view_products' %}" class="back-button">Назад к продуктам</a>
+  </div>
+</div>
+
+<hr>
+
+<h3 class="edit-title">Редактировать продукт</h3>
+<form method="post" class="edit-form">
+  {% csrf_token %}
+  <label for="productname">Название:</label><br>
+  <input type="text" name="productname" id="productname" value="{{ product.productname }}"><br><br>
+
+  <label for="price">Цена:</label><br>
+  <input type="number" step="0.01" name="price" id="price" value="{{ product.price }}"><br><br>
+
+  <button type="submit" class="edit-button">Сохранить изменения</button>
+</form>
 {% endblock %}

@@ -4,6 +4,7 @@
 body {
     background-color: #F0F2F5;
     margin: 0px;
+    font-family: "Inter", sans-serif;
 }
 
 .header {
@@ -576,5 +577,48 @@ hr {
 .delete-button:hover {
   background-color: #a71d2a;
 }
+
+.edit-title {
+  margin-top: 50px;
+  font-size: 24px;
+  text-align: center;
+  font-family: "Inter", sans-serif;
+}
+
+.edit-form {
+  margin: 20px auto; /* Центрирование по горизонтали */
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  max-width: 500px;
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.edit-form input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-family: "Inter", sans-serif;
+}
+
+.edit-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: "Inter", sans-serif;
+  width: 100%;
+}
+
+.edit-button:hover {
+  background-color: #218838;
+}
+
 
 

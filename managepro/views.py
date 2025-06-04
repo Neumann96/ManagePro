@@ -48,6 +48,13 @@ def warehouse_list(request):
 
 def product_detail(request, productid):
     product = get_object_or_404(Product, productid=productid)
+
+    if request.method == 'POST':
+        product.productname = request.POST.get('productname')
+        product.price = request.POST.get('price')
+        product.save()
+        return redirect('product_detail', productid=product.productid)
+
     return render(request, 'product_detail.html', {'product': product})
 
 
