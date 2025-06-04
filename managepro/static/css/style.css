@@ -561,5 +561,20 @@ hr {
   background-color: #F0F2F5;
 }
 
+.delete-button {
+  margin-top: 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #a71d2a;
+}
 
 

@@ -14,6 +14,10 @@
           <p><span class="title-product">В наличии:</span> {{ product.quantity }} шт.</p>
           <p><span class="title-product">Окончание срока годности:</span><br>{{ product.expirydate }}</p>
           <p><span class="title-product">Склад:</span> {{ product.warehouseid }}</p>
+            <form method="post" action="{% url 'delete_product' product.productid %}">
+                {% csrf_token %}
+                <button type="submit" class="delete-button">Удалить</button>
+            </form>
         </div>
       </a>
     {% endfor %}

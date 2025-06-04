@@ -5,7 +5,7 @@ from unicodedata import category
 from django.db.models import Count
 from .models import *
 from django.utils import timezone
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 
 def main_window(request):
@@ -49,3 +49,10 @@ def warehouse_list(request):
 def product_detail(request, productid):
     product = get_object_or_404(Product, productid=productid)
     return render(request, 'product_detail.html', {'product': product})
+
+
+def delete_product(request, product_id):
+    if request.method == "POST":
+        product = get_object_or_404(Product, productid=product_id)
+        product.delete()
+    return redirect('view_products')
