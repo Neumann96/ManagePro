@@ -9,5 +9,6 @@ from django.conf import settings
 urlpatterns = [
     path('', views.main_window, name='main_window'),
     path('admin/', admin.site.urls),
-    path('products/', views.views_products, name='view_products')
+    path('products/', views.views_products, name='view_products'),
+    path('categories/', views.views_categories, name='view_categories'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

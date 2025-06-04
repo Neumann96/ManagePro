@@ -1,5 +1,7 @@
 from django.db.models.signals import post_save
 from django.shortcuts import render
+from unicodedata import category
+
 from .models import *
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404
@@ -12,3 +14,8 @@ def main_window(request):
 def views_products(request):
     products = Product.objects.filter(image__isnull=False).exclude(image='')
     return render(request, 'products.html', {'products': products})
+
+
+def views_categories(request):
+    category = Category.objects
+    return render(request, 'categories.html', {'category': category})

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky Mood</title>
+    <title>ManagePro</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -12,9 +12,9 @@
         <nav class="head-text">
             <a href="{% url 'main_window' %}" class="name"><h2>ManagePro</h2></a>
             <ul>
-                <li><a href="products" class="enter">Мои продукты</a></li>
-                <li><a href="categories" class="enter">Мои категории</a></li>
-                <li><a href="warehouse" class="enter">Мои склады</a></li>
+                <li><a href="{% url 'view_products' %}" class="enter">Мои продукты</a></li>
+                <li><a href="{% url 'view_categories' %}" class="enter">Мои категории</a></li>
+                <li><a href="" class="enter">Мои склады</a></li>
             </ul>
             <ul>
                 <li>
@@ -49,7 +49,7 @@
                 Список доступных складов
             </p>
             <p>
-                <span class="basement-main-text">О, ManagePro</span><br>
+                <span class="basement-main-text">О ManagePro</span><br>
                 Вопросы-ответы<br>
                 Отзывы клиентов<br>
                 Контакты<br>

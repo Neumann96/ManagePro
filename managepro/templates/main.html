@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sky Mood</title>
+    <title>ManagePro</title>
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
@@ -11,16 +11,16 @@
         <nav class="head-text">
             <a href="{% url 'main_window' %}" class="name"><h2>ManagePro</h2></a>
             <ul>
-                <li><a href="products" class="enter">Мои продукты</a></li>
-                <li><a href="categories" class="enter">Мои категории</a></li>
-                <li><a href="warehouse" class="enter">Мои склады</a></li>
+                <li><a href="{% url 'view_products' %}" class="enter">Мои продукты</a></li>
+                <li><a href="{% url 'view_categories' %}" class="enter">Мои категории</a></li>
+                <li><a href="" class="enter">Мои склады</a></li>
             </ul>
             <ul>
                 <li>
-                    <a class="enter" href="" target="_blank">Вход</a>
+                    <a class="enter" href="{% url 'view_products' %}">Вход</a>
                 </li>
                 <li>
-                    <a class="choose" href="" target="_blank">Выбрать тариф</a>
+                    <a class="choose" href="">Выбрать тариф</a>
                 </li>
             </ul>
         </nav>
@@ -37,7 +37,7 @@
                 </div>
             </h4>
         </div>
-        <a class="choose_2" href="" target="_blank">Мой склад</a>
+        <a class="choose_2" href="{% url 'view_products' %}">Мой склад</a>
     </div>
 
     <div class="achiev">
@@ -59,7 +59,7 @@
             <div><img src="static/css/3.png" alt=""> <br> <p>Сотрудничество при перемещении тяжелых грузов</p></div>
             <div><img src="static/css/4.png" alt=""> <br> <p>Мониторинг уровня товарных запасов</p></div>
         </div>
-        <a class="choose_3" href="" target="_blank">Хочу начать работать с ManagePro</a>
+        <a class="choose_3" href="">Хочу начать работать с ManagePro</a>
     </div>
 
     <footer class="basement">
@@ -81,7 +81,7 @@
                 Список доступных складов
             </p>
             <p>
-                <span class="basement-main-text">О, ManagePro</span><br>
+                <span class="basement-main-text">О ManagePro</span><br>
                 Вопросы-ответы<br>
                 Отзывы клиентов<br>
                 Контакты<br>
