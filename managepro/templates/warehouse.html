@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="my_products"><h4>Мои <span class="text-blue">склады</span></h4></div>
+
+  <form method="get" class="search-form">
+    <input type="text" name="search" placeholder="Поиск складов..." value="{{ query }}" class="search-input">
+    <button type="submit" class="search-button">Найти</button>
+  </form>
+
+  <div class="warehouse-grid">
+    {% for warehouse in warehouses %}
+      <div class="warehouse-card">
+        <h3>{{ warehouse.address }}</h3>
+        <p>Минимальный уровень запаса: {{ warehouse.minimumstocklevel }}</p>
+      </div>
+    {% empty %}
+    <div class="warehouse-card">
+      <p>Склады не найдены.</p>
+    </div>
+    {% endfor %}
+  </div>
+{% endblock %}

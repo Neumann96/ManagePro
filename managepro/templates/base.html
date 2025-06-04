@@ -14,11 +14,11 @@
             <ul>
                 <li><a href="{% url 'view_products' %}" class="enter">Мои продукты</a></li>
                 <li><a href="{% url 'view_categories' %}" class="enter">Мои категории</a></li>
-                <li><a href="" class="enter">Мои склады</a></li>
+                <li><a href="{% url 'view_warehouse' %}" class="enter">Мои склады</a></li>
             </ul>
             <ul>
                 <li>
-                    <a class="enter" href="" target="_blank">Вход</a>
+                    <a class="enter" href="{% url 'view_products' %}">Вход</a>
                 </li>
                 <li>
                     <a class="choose" href="" target="_blank">Выбрать тариф</a>

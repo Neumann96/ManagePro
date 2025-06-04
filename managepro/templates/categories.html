@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="my_products"><h4><span class="text-blue">Категории</span></h4></div>
-  <form method="get">
-    <input type="text" name="search" placeholder="Поиск по категориям..." value="{{ query }}">
-    <button type="submit">Найти</button>
+  <div class="my_products"><h4>Мои <span class="text-blue">категории</span></h4></div>
+  <form method="get" class="search-form">
+    <input type="text" name="search" placeholder="Поиск по категориям..." value="{{ query }}" class="search-input">
+    <button type="submit" class="search-button">Найти</button>
   </form>
   <ul class="category-list">
     {% for cat in category %}
       <li class="category-item">{{ cat.categoryname }}</li>
     {% empty %}
-      <li>Категории не найдены.</li>
+      <li class="category-item">Категории не найдены</li>
     {% endfor %}
   </ul>
 
   <div class="my_products"><h4>Количество <span class="text-blue">продуктов</span> в категориях</h4></div>
-  <ul>
+  <div class="category-grid">
     {% for cat in category_with_counts %}
-      <li>{{ cat.categoryname }} — {{ cat.product_count }} товаров</li>
+      <div class="category-card">
+          <h3>{{ cat.categoryname }}</h3>
+          <p>{{ cat.product_count }} товаров</p>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 {% endblock %}

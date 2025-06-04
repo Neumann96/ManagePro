@@ -31,3 +31,16 @@ def views_categories(request):
         'category_with_counts': category_with_counts,
         'query': query,
     })
+
+
+def warehouse_list(request):
+    query = request.GET.get('search')
+    if query:
+        warehouses = Warehouse.objects.filter(address__icontains=query)
+    else:
+        warehouses = Warehouse.objects.all()
+
+    return render(request, 'warehouse.html', {
+        'warehouses': warehouses,
+        'query': query
+    })
