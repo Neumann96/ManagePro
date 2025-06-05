@@ -46,9 +46,9 @@ li {
 
 .choose {
     text-decoration: none;
-    padding: 2px;
+    padding: 3px 10px;
     background-color: #ffb400;
-    border: 1px solid #ffb400;
+    border: 2px solid #ffb400;
     color: white;
     border-radius: 4px;
     transition: background-color 0.4s, color 0.4s;
@@ -621,8 +621,8 @@ hr {
 }
 
 .add-product-form {
-  max-width: 600px;
-  margin: 0 auto;
+  width: 300px;
+  margin: 80 auto;
   padding: 30px;
   background-color: #f9f9f9;
   border-radius: 12px;
@@ -631,7 +631,7 @@ hr {
 
 .add-product-form h3 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 .add-product-form form {

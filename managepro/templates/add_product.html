@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="add-product-form">
+  <h3>Добавить новый <span class="text-blue">продукт</span></h3>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label>Название продукта:</label>
+    <input type="text" name="productname" required>
+
+    <label>Категория:</label>
+    <input type="number" name="categoryid">
+
+    <label>Количество:</label>
+    <input type="number" name="quantity">
+
+    <label>Срок годности:</label>
+    <input type="date" name="expirydate">
+
+    <label>Цена:</label>
+    <input type="number" step="0.01" name="price">
+
+    <label>Дата поступления:</label>
+    <input type="datetime-local" name="datereceived">
+
+    <label>Склад:</label>
+    <select name="warehouseid">
+        <option value="">-- не выбран --</option>
+        {% for warehouse in warehouses %}
+            <option value="{{ warehouse.pk }}">{{ warehouse }}</option>
+        {% endfor %}
+    </select>
+
+    <label>Изображение:</label>
+    <input type="file" name="image">
+
+    <button type="submit" class="submit-button">Добавить товар</button>
+  </form>
+</div>
+{% endblock %}

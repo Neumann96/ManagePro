@@ -13,37 +13,36 @@ def main_window(request):
 
 
 def views_products(request):
-    if request.method == "POST":
-        productname = request.POST.get("productname")
-        categoryid = request.POST.get("categoryid") or None
-        quantity = request.POST.get("quantity") or None
-        expirydate = request.POST.get("expirydate") or None
-        price = request.POST.get("price") or None
-        datereceived = request.POST.get("datereceived") or None
-        warehouseid_input = request.POST.get("warehouseid") or None
-        try:
-            warehouse = Warehouse.objects.get(pk=warehouseid_input) if warehouseid_input else None
-        except Warehouse.DoesNotExist:
-            warehouse = None
-        image = request.FILES.get("image")
-
-        product = Product(
-            productname=productname,
-            categoryid=Category.objects.get(pk=categoryid) if categoryid else None,
-            quantity=quantity,
-            expirydate=expirydate or None,
-            price=price,
-            datereceived=parse_datetime(datereceived) if datereceived else None,
-            warehouseid=warehouse,
-            image=image,
-        )
-        product.save()
-        return redirect('view_products')
-    warehouses = Warehouse.objects.all()
+    # if request.method == "POST":
+    #     productname = request.POST.get("productname")
+    #     categoryid = request.POST.get("categoryid") or None
+    #     quantity = request.POST.get("quantity") or None
+    #     expirydate = request.POST.get("expirydate") or None
+    #     price = request.POST.get("price") or None
+    #     datereceived = request.POST.get("datereceived") or None
+    #     warehouseid_input = request.POST.get("warehouseid") or None
+    #     try:
+    #         warehouse = Warehouse.objects.get(pk=warehouseid_input) if warehouseid_input else None
+    #     except Warehouse.DoesNotExist:
+    #         warehouse = None
+    #     image = request.FILES.get("image")
+    #
+    #     product = Product(
+    #         productname=productname,
+    #         categoryid=Category.objects.get(pk=categoryid) if categoryid else None,
+    #         quantity=quantity,
+    #         expirydate=expirydate or None,
+    #         price=price,
+    #         datereceived=parse_datetime(datereceived) if datereceived else None,
+    #         warehouseid=warehouse,
+    #         image=image,
+    #     )
+    #     product.save()
+    #     return redirect('view_products')
+    # warehouses = Warehouse.objects.all()
     products = Product.objects.filter(image__isnull=False).exclude(image='')
     return render(request, 'products.html', {
         'products': products,
-        'warehouses': warehouses
     })
 
 def views_categories(request):
@@ -92,3 +91,37 @@ def delete_product(request, productid):
         product = get_object_or_404(Product, productid=productid)
         product.delete()
     return redirect('view_products')
+
+def add_product(request):
+    if request.method == "POST":
+        productname = request.POST.get("productname")
+        categoryid = request.POST.get("categoryid") or None
+        quantity = request.POST.get("quantity") or None
+        expirydate = request.POST.get("expirydate") or None
+        price = request.POST.get("price") or None
+        datereceived = request.POST.get("datereceived") or None
+        warehouseid_input = request.POST.get("warehouseid") or None
+        try:
+            warehouse = Warehouse.objects.get(pk=warehouseid_input) if warehouseid_input else None
+        except Warehouse.DoesNotExist:
+            warehouse = None
+        image = request.FILES.get("image")
+
+        product = Product(
+            productname=productname,
+            categoryid=Category.objects.get(pk=categoryid) if categoryid else None,
+            quantity=quantity,
+            expirydate=expirydate or None,
+            price=price,
+            datereceived=parse_datetime(datereceived) if datereceived else None,
+            warehouseid=warehouse,
+            image=image,
+        )
+        product.save()
+        return redirect('view_products')
+    warehouses = Warehouse.objects.all()
+    products = Product.objects.filter(image__isnull=False).exclude(image='')
+    return render(request, 'add_product.html', {
+        'products': products,
+        'warehouses': warehouses
+    })
