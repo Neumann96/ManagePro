@@ -79,11 +79,19 @@ def product_detail(request, productid):
 
     if request.method == 'POST':
         product.productname = request.POST.get('productname')
-        product.price = request.POST.get('price')
+        product_price = request.POST.get('price')
+        if product_price:
+            product.price = product_price
         product.save()
         return redirect('product_detail', productid=product.productid)
 
-    return render(request, 'product_detail.html', {'product': product})
+    # Явное преобразование Decimal в float для корректного отображения в input
+    price_value = float(product.price) if product.price is not None else ''
+    price_value = str(price_value).replace(',', '.')
+    return render(request, 'product_detail.html', {
+        'product': product,
+        'price_value': price_value
+    })
 
 
 def delete_product(request, productid):

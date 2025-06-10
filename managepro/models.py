@@ -1,17 +1,17 @@
 from django.db import models
 
 class Archiveproduct(models.Model):
-    archiveid = models.AutoField(primary_key=True)
-    productid = models.IntegerField(blank=True, null=True)
-    productname = models.CharField(max_length=255, blank=True, null=True)
-    categoryid = models.IntegerField(blank=True, null=True)
-    quantity = models.IntegerField(blank=True, null=True)
-    expirydate = models.DateField(blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    datereceived = models.DateField(blank=True, null=True)
-    warehouseid = models.IntegerField(blank=True, null=True)
-    archivedat = models.DateTimeField(blank=True, null=True)
-    reason = models.TextField(blank=True, null=True)
+    archiveid = models.AutoField(primary_key=True, verbose_name='Идентификатор архива')
+    productid = models.IntegerField(blank=True, null=True, verbose_name='Идентификатор продукта')
+    productname = models.CharField(max_length=255, blank=True, null=True, verbose_name='Название продукта')
+    categoryid = models.IntegerField(blank=True, null=True, verbose_name='Идентификатор категории')
+    quantity = models.IntegerField(blank=True, null=True, verbose_name='Количество')
+    expirydate = models.DateField(blank=True, null=True, verbose_name='Срок годности')
+    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name='Цена')
+    datereceived = models.DateField(blank=True, null=True, verbose_name='Дата получения')
+    warehouseid = models.IntegerField(blank=True, null=True, verbose_name='Идентификатор склада')
+    archivedat = models.DateTimeField(blank=True, null=True, verbose_name='Дата архивации')
+    reason = models.TextField(blank=True, null=True, verbose_name='Причина')
 
     class Meta:
         managed = False
@@ -24,8 +24,8 @@ class Archiveproduct(models.Model):
 
 
 class Category(models.Model):
-    categoryid = models.AutoField(primary_key=True)
-    categoryname = models.CharField(max_length=255)
+    categoryid = models.AutoField(primary_key=True, verbose_name='Идентификатор категории')
+    categoryname = models.CharField(max_length=255, verbose_name='Название категории')
 
     class Meta:
         managed = False
@@ -38,10 +38,10 @@ class Category(models.Model):
 
 
 class Discount(models.Model):
-    discountid = models.AutoField(primary_key=True)
-    discountpercentage = models.DecimalField(max_digits=5, decimal_places=2)
-    activationcondition = models.TextField(blank=True, null=True)
-    status = models.TextField(blank=True, null=True)
+    discountid = models.AutoField(primary_key=True, verbose_name='Идентификатор скидки')
+    discountpercentage = models.DecimalField(max_digits=5, decimal_places=2, verbose_name='Процент скидки')
+    activationcondition = models.TextField(blank=True, null=True, verbose_name='Условие активации')
+    status = models.TextField(blank=True, null=True, verbose_name='Статус')
 
     class Meta:
         managed = False
@@ -54,12 +54,14 @@ class Discount(models.Model):
 
 
 class Notification(models.Model):
-    notificationid = models.AutoField(primary_key=True)
-    productid = models.ForeignKey('Product',on_delete=models.CASCADE,db_column='productid',blank=True,null=True)
-    warehouseid = models.ForeignKey('Warehouse', models.DO_NOTHING, db_column='warehouseid', blank=True, null=True)
-    notificationtype = models.TextField(blank=True, null=True)
-    creationdate = models.DateTimeField(blank=True, null=True)
-    status = models.TextField(blank=True, null=True)
+    notificationid = models.AutoField(primary_key=True, verbose_name='Идентификатор уведомления')
+    productid = models.ForeignKey('Product', on_delete=models.CASCADE, db_column='productid', blank=True, null=True,
+                                  verbose_name='Продукт')
+    warehouseid = models.ForeignKey('Warehouse', models.DO_NOTHING, db_column='warehouseid', blank=True, null=True,
+                                    verbose_name='Склад')
+    notificationtype = models.TextField(blank=True, null=True, verbose_name='Тип уведомления')
+    creationdate = models.DateTimeField(blank=True, null=True, verbose_name='Дата создания')
+    status = models.TextField(blank=True, null=True, verbose_name='Статус')
 
     class Meta:
         managed = False
@@ -72,15 +74,18 @@ class Notification(models.Model):
 
 
 class Product(models.Model):
-    productid = models.AutoField(primary_key=True)
-    productname = models.CharField(max_length=255)
-    categoryid = models.ForeignKey(Category, models.DO_NOTHING, db_column='categoryid', blank=True, null=True)
-    quantity = models.IntegerField(blank=True, null=True)
-    expirydate = models.DateField(blank=True, null=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
-    datereceived = models.DateTimeField(blank=True, null=True)
-    warehouseid = models.ForeignKey('Warehouse', models.DO_NOTHING, db_column='warehouseid', blank=True, null=True)
-    image = models.ImageField(upload_to='product_images/', blank=True, null=True)
+    productid = models.AutoField(primary_key=True, verbose_name='Идентификатор продукта')
+    productname = models.CharField(max_length=255, verbose_name='Название продукта')
+    categoryid = models.ForeignKey(Category, models.DO_NOTHING, db_column='categoryid', blank=True, null=True,
+                                   verbose_name='Категория')
+    quantity = models.IntegerField(blank=True, null=True, verbose_name='Количество')
+    expirydate = models.DateField(blank=True, null=True, verbose_name='Срок годности')
+    price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name='Цена')
+    datereceived = models.DateTimeField(blank=True, null=True, verbose_name='Дата получения')
+    warehouseid = models.ForeignKey('Warehouse', models.DO_NOTHING, db_column='warehouseid', blank=True, null=True,
+                                    verbose_name='Склад')
+    image = models.ImageField(upload_to='product_images/', blank=True, null=True, verbose_name='Изображение')
+
 
     class Meta:
         managed = False
@@ -120,10 +125,10 @@ class ProductDiscount(models.Model):
 
 
 class Report(models.Model):
-    reportid = models.AutoField(primary_key=True)
-    creationdate = models.DateTimeField(blank=True, null=True)
-    reporttype = models.TextField(blank=True, null=True)
-    format = models.TextField(blank=True, null=True)
+    reportid = models.AutoField(primary_key=True, verbose_name='Идентификатор отчёта')
+    creationdate = models.DateTimeField(blank=True, null=True, verbose_name='Дата создания')
+    reporttype = models.TextField(blank=True, null=True, verbose_name='Тип отчёта')
+    format = models.TextField(blank=True, null=True, verbose_name='Формат')
 
     class Meta:
         managed = False
@@ -136,8 +141,9 @@ class Report(models.Model):
 
 
 class ReportProduct(models.Model):
-    reportid = models.ForeignKey(Report, models.DO_NOTHING, db_column='reportid')
-    productid = models.ForeignKey(Product, models.DO_NOTHING, db_column='productid')
+    reportid = models.ForeignKey(Report, models.DO_NOTHING, db_column='reportid', verbose_name='Отчёт')
+    productid = models.ForeignKey(Product, models.DO_NOTHING, db_column='productid', verbose_name='Продукт')
+
 
     class Meta:
         managed = False
@@ -151,10 +157,10 @@ class ReportProduct(models.Model):
 
 
 class Users(models.Model):
-    userid = models.AutoField(primary_key=True)
-    username = models.CharField(unique=True, max_length=255)
-    password = models.CharField(max_length=255)
-    role = models.CharField(max_length=50)
+    userid = models.AutoField(primary_key=True, verbose_name='Идентификатор пользователя')
+    username = models.CharField(unique=True, max_length=255, verbose_name='Имя пользователя')
+    password = models.CharField(max_length=255, verbose_name='Пароль')
+    role = models.CharField(max_length=50, verbose_name='Роль')
 
     class Meta:
         managed = False
@@ -169,16 +175,16 @@ class Users(models.Model):
 
 
 class Warehouse(models.Model):
-    warehouseid = models.AutoField(primary_key=True)
-    address = models.CharField(max_length=255)
-    minimumstocklevel = models.IntegerField(blank=True, null=True)
+    warehouseid = models.AutoField(primary_key=True, verbose_name='Идентификатор склада')
+    address = models.CharField(max_length=255, verbose_name='Адрес')
+    minimumstocklevel = models.IntegerField(blank=True, null=True, verbose_name='Минимальный уровень запасов')
+
 
     class Meta:
         managed = False
         db_table = 'warehouse'
         verbose_name = 'Склады'
         verbose_name_plural = "Склады"
-
 
     def __str__(self):
         return self.address
